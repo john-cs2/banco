@@ -87,6 +87,14 @@ namespace BancoConsola.UI
                             $"Dinero total: ${banco.Clientes.TotalDinero()}"
                         );
                         break;
+                    
+                        case 13:
+                        Console.WriteLine("---------------Saliendo......---------------"          );
+                        break;
+
+                    default:
+                        Console.WriteLine("---------------opcion invalida---------------");
+                        break;
                 }
 
             } while (opcion != 13);

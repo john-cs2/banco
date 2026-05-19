@@ -14,10 +14,13 @@ namespace BancoConsola.Servicios
             if (Clientes.BuscarPorCedula(cedula) != null ||
                 Clientes.BuscarPorCuenta(cuenta) != null)
             {
+                Console.WriteLine("---------Registro Fallido----------");
                 return false;
+                
             }
 
             Clientes.Agregar(new Cliente(cedula, nombre, cuenta));
+            Console.WriteLine("---------Registro Exitoso----------");
             return true;
         }
 
@@ -26,12 +29,16 @@ namespace BancoConsola.Servicios
             Cliente cliente = Clientes.BuscarPorCuenta(cuenta);
 
             if (cliente == null)
-                return false;
+            {
+                Console.WriteLine("---------Deposito Fallido----------");
+                return false;   
+            }
 
             cliente.Saldo += monto;
 
             Historial.Apilar(new Transaccion(cuenta, "Deposito", monto));
-
+            
+            Console.WriteLine($"---------Has depositado {monto} con exito----------");
             return true;
         }
 
@@ -40,11 +47,15 @@ namespace BancoConsola.Servicios
             Cliente cliente = Clientes.BuscarPorCuenta(cuenta);
 
             if (cliente == null || cliente.Saldo < monto)
+            {
+                Console.WriteLine("--------- Saldo insuficiente----------");
                 return false;
+            } 
 
             cliente.Saldo -= monto;
 
             Historial.Apilar(new Transaccion(cuenta, "Retiro", monto));
+            Console.WriteLine($"---------Has retirado {monto} con exito----------");
 
             return true;
         }
@@ -52,16 +63,22 @@ namespace BancoConsola.Servicios
         public bool DeshacerUltimaTransaccion()
         {
             if (Historial.EstaVacia())
-                return false;
+               {
+                Console.WriteLine("No hay transacciones recientes");
+                 return false;
+               }
 
             Transaccion t = Historial.Desapilar();
 
             Cliente cliente = Clientes.BuscarPorCuenta(t.NumeroCuenta);
 
             if (t.Tipo == "Deposito")
-                cliente.Saldo -= t.Monto;
+                {cliente.Saldo -= t.Monto;
+                Console.WriteLine("deposito deshecho con exito");}
             else
-                cliente.Saldo += t.Monto;
+               { cliente.Saldo += t.Monto;
+                Console.WriteLine("retiro deshecho con exito");
+               }
 
             return true;
         }
