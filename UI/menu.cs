@@ -103,28 +103,31 @@ namespace BancoConsola.UI
         private void RegistrarCliente()
         {
             Console.Write("Cedula: ");
+
             string cedula = Console.ReadLine();
 
-            Console.Write("Nombre: ");
-            string nombre = Console.ReadLine();
-
-            Console.Write("Cuenta: ");
-            string cuenta = Console.ReadLine();
-
-            bool registrado = banco.RegistrarCliente(
-                cedula,
-                nombre,
-                cuenta
-            );
-
-            Console.WriteLine(
-                registrado
-                ? "Cliente registrado"
-                : "Cliente duplicado"
-            );
+        if (!int.TryParse(cedula, out _))
+        {
+            Console.WriteLine("Error: debes ingresar un número entero.");
+            return;
         }
 
-        private void BuscarCliente()
+        Console.Write("Nombre: ");
+        string nombre = Console.ReadLine();
+
+        bool registrado = banco.RegistrarCliente(
+            cedula,
+            nombre
+        );
+
+        Console.WriteLine(
+            registrado
+            ? "Cliente registrado"
+            : "Cliente duplicado"
+        );
+        }
+
+         private void BuscarCliente()
         {
             Console.Write("Cuenta: ");
             string cuenta = Console.ReadLine();
@@ -137,7 +140,6 @@ namespace BancoConsola.UI
                 : "No encontrado"
             );
         }
-
         private void AgregarACola()
         {
             Console.Write("Cuenta: ");

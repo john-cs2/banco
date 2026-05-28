@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jhon\\Documents\\cshare\\Banco\\Banco.csproj": {}
+    "C:\\Users\\Jhon\\Documents\\cshare\\banco\\Banco.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jhon\\Documents\\cshare\\Banco\\Banco.csproj": {
+    "C:\\Users\\Jhon\\Documents\\cshare\\banco\\Banco.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jhon\\Documents\\cshare\\Banco\\Banco.csproj",
+        "projectUniqueName": "C:\\Users\\Jhon\\Documents\\cshare\\banco\\Banco.csproj",
         "projectName": "Banco",
-        "projectPath": "C:\\Users\\Jhon\\Documents\\cshare\\Banco\\Banco.csproj",
+        "projectPath": "C:\\Users\\Jhon\\Documents\\cshare\\banco\\Banco.csproj",
         "packagesPath": "C:\\Users\\Jhon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jhon\\Documents\\cshare\\Banco\\obj\\",
+        "outputPath": "C:\\Users\\Jhon\\Documents\\cshare\\banco\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jhon\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -9,10 +9,26 @@ namespace BancoConsola.Servicios
         public ColaAtencion Cola = new ColaAtencion();
         public PilaTransacciones Historial = new PilaTransacciones();
 
-        public bool RegistrarCliente(string cedula, string nombre, string cuenta)
+        public bool RegistrarCliente(string cedula, string nombre)
         {
-            if (Clientes.BuscarPorCedula(cedula) != null ||
-                Clientes.BuscarPorCuenta(cuenta) != null)
+
+            Random random = new Random();
+
+            string cuenta;
+
+            do
+            {
+                cuenta = random.Next(
+                    100000000,
+                    999999999
+                ).ToString();
+
+            } while (Clientes.BuscarPorCuenta(cuenta) != null);
+                        
+                        if (Clientes.BuscarPorCedula(cedula) != null ||
+                            Clientes.BuscarPorCuenta(cuenta) != null)
+
+
             {
                 Console.WriteLine("---------Registro Fallido----------");
                 return false;
@@ -20,7 +36,7 @@ namespace BancoConsola.Servicios
             }
 
             Clientes.Agregar(new Cliente(cedula, nombre, cuenta));
-            Console.WriteLine("---------Registro Exitoso----------");
+            Console.WriteLine($"---------Registro Exitoso, su numero de cuenta es: {cuenta}----------");
             return true;
         }
 
